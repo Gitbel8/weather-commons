@@ -4,11 +4,12 @@ Working notes for sketch 13. Read this first. Date each entry, and move items to
 
 ## Next
 
+- Add places and years of the children, with sources.
 - Collect three to five sources on the storms of Ọya’s children (before 9 November).
 
 ## Decisions
 
--
+- 2026-11-02: the storms are metaphors for abducted children. Records of children, places and years are historical; storms and map are interpretive.
 
 ## Questions
 

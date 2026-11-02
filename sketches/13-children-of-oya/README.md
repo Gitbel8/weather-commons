@@ -19,9 +19,9 @@ Then open http://localhost:8000.
 
 ## 1. Event
 
-The repeated storms and atmospheric changes of the 19th century linked to the weather phenomenon of Ọya’s children, and how they came to be forgotten. Ọya is the Yoruba orisha of wind and storms.
+A speculative map. The storms are metaphors for children who were abducted and taken to several countries in Europe in the 19th century. Each storm appears in a given year and recurs until a later one. Ọya is the Yoruba orisha of wind and storms.
 
-To check: places, dates, the accounts that record the storms, and who recorded them.
+The children, places and years are historical (bkk has them; to add with sources). The storms and the map are interpretive.
 
 ## 2. Simulate
 
@@ -40,4 +40,5 @@ The story in a few sentences. What can a viewer learn here, and what should they
 For every dataset: who made it, which version and date, when you downloaded it, its licence, and what you changed. Say whether each layer is observed, reanalysed, modelled, synthetic or interpretive. Then say what this sketch cannot show.
 
 - Wind field in `index.html`: synthetic, made up for the starter template. Replace it.
-- Storms of Ọya’s children, 19th century: no sources listed yet. To check.
+- Children, places and years: historical records from bkk’s research. Sources to add.
+- Storms and map: interpretive. The storms are metaphors, not observed weather.
