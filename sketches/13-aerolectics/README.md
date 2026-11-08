@@ -1,4 +1,4 @@
-# 13 · Children of Ọya
+# 13 · Aerolectics
 
 Author: bkk · Started: 2026-11-02 · Status: sketch · Stack: static HTML + JS
 
@@ -6,12 +6,12 @@ How is it possible that the repeated storms and atmospheric changes due to the w
 
 ## Run
 
-Online, once published: `https://gitbel8.github.io/weather-commons/13-children-of-oya/`
+Online, once published: `https://gitbel8.github.io/weather-commons/13-aerolectics/`
 
 On your computer:
 
 ```bash
-cd sketches/13-children-of-oya
+cd sketches/13-aerolectics
 python -m http.server 8000
 ```
 

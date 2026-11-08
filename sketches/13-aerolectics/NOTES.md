@@ -19,3 +19,4 @@ Working notes for sketch 13. Read this first. Date each entry, and move items to
 
 - 2026-11-02: started from the template.
 - 2026-11-02: wrote the research question on the page and in the README.
+- 2026-11-08: renamed the sketch from "Children of Ọya" to "Aerolectics" and the folder from `13-children-of-oya` to `13-aerolectics`. Text in the page and README that still says Ọya’s children was left as it is.
