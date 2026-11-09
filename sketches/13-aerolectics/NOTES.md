@@ -9,6 +9,7 @@ Working notes for sketch 13. Read this first. Date each entry, and move items to
 
 ## Decisions
 
+- 2026-11-09: the storm begins with the capture. The track is drawn collectively from Sudan and Ethiopia via Cairo and Alexandria; ports are named, routes across the sea are not traced.
 - 2026-11-09: research question: movements of air that resist discipline, or, in metaphorical terms, weather modification. Title after Brathwaite's tidalectics.
 - 2026-11-08: unclear records stay visible on the map: all possible convents are named, all spellings kept, uncertain records dashed.
 - 2026-11-08: duration is shown as extent, not strength, so no life reads as weaker. Lung deaths in two levels: named and likely.
@@ -23,3 +24,4 @@ Working notes for sketch 13. Read this first. Date each entry, and move items to
 - 2026-11-02: wrote the research question on the page and in the README.
 - 2026-11-08: renamed the sketch from "Children of Ọya" to "Aerolectics" and the folder from `13-children-of-oya` to `13-aerolectics`. Text in the page and README that still says Ọya’s children was left as it is.
 - 2026-11-09: replaced the template with the Aerolectics map: 557 entries from Küppers-Braun 2021, convents, names, lifespans, breath, Insubric Line.
+- 2026-11-09: added the storm track from Sudan and Ethiopia, the Nile, the vortex at Cairo and Alexandria, ports of arrival, and a switch between the whole route and Europe.

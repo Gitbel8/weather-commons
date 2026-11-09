@@ -25,7 +25,7 @@ The title builds on Kamau Brathwaite's *tidalectics*: telling histories through 
 
 ## 2. Simulate
 
-An interpretive map. One spiral per entry, placed at her convent town. It widens with each year between arrival and death. Where no death is recorded, it has not ended and keeps turning. Deaths recorded as affecting lungs or breath are drawn as a breathing red line. Uncertain records (several possible convents, contradictory dates) are dashed. Moving over or tapping a spiral shows her record: name before baptism where recorded, baptismal name, convent, dates, cause.
+An interpretive map in two parts. The storm track begins with the capture in Darfur, Kordofan, the Nuba Mountains, Sennar and among the Oromo, follows caravan routes and the Nile, gathers into a vortex at Cairo and Alexandria. From there one line runs to each storm: lines to storms that never ended keep pulsing, lines to storms that ended are still. It is drawn collectively: the routes of individual girls* are not recorded. Ports of arrival named in the source (Marseille, Genoa, Venice, Trieste) are marked. The lines from Alexandria to the convents are interpretation, not recorded routes. In Europe, one spiral per entry, placed at her convent town. It widens with each year between arrival and death. Where no death is recorded, it has not ended and keeps turning. Deaths recorded as affecting lungs or breath are drawn as a breathing red line. Uncertain records (several possible convents, contradictory dates) are dashed. Moving over or tapping a spiral shows her record: name before baptism where recorded, baptismal name, convent, dates, cause.
 
 ## 3. Situate
 
@@ -42,6 +42,7 @@ The map is the starting point. The second layer, still to come, is how weather w
 - Names: name before baptism where the source gives one, with all spellings, otherwise X*. Racist labels in the source are not reproduced. Some names (Bakhita, Mabruka) may themselves have been given during enslavement.
 - Spirals, rotation, breathing: interpretive. Not observed weather.
 - Breath: a cause of death is recorded for only 92 of 557 entries; 25 name lungs or breath, 22 more most likely mean the same.
+- Storm track: regions of capture, caravan routes, Nile, markets and ports from Küppers-Braun (pp. 49, 53, 57, 104, 112, chapter 2). Drawn collectively and schematically; interpretive. The Nile is drawn by hand. Spirals measure arrival to death; the time between capture and arrival is not recorded.
 - Coastline: Natural Earth (public domain), via the world-atlas package. Alps outline and fault lines: drawn by hand, schematic.
 - The asterisk marks what the archive cannot hold: uncertain names, uncertain spellings, and categories imposed on them.
 - The map cannot show discipline itself, only lifespans. The numbering in the source has gaps; the map shows the 557 recorded entries, not everyone.
