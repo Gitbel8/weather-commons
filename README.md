@@ -25,6 +25,7 @@ How the four sessions work (Event, Simulate, Situate, Narrate): [docs/workshop/R
 | 01 | [Realtime Weather pilot](sketches/01-realtime-weather-pilot/) | Farzin Lotfi-Jam | pilot | vinext (Next on Vite) + React + three.js, Cloudflare | An evidence-led technical pilot for the Realtime Weather working group. |
 | 02 | [Haida witness composite](sketches/02-haida-witness-composite/) | Boone Mercado (with Claude) | sketch, v0.2 | static HTML + JS, no build step | A layered model of the 2012 Haida Gwaii iron dump. |
 | 03 | [Operation Popeye, Laos 1966–1972](sketches/03-operation-popeye-laos-1966-1972/) | Farzin Lotfi-Jam (with Claude) | sketch | static HTML + JS, no build step | The US military's secret cloud seeding over Laos, told in four parts: what happened, where the weather went, who and what it touched, and what we can and can't say. |
+| 13 | [Aerolectics](sketches/13-aerolectics/) | bkk | sketch | static HTML + JS | What changes when we understand the African girls* and young women* taken to European convents in the 19th century not as statistics or archival collateral damage, but as movements of air that resist discipline, or, in metaphorical terms, weather modification? |
 <!-- sketches:end -->
 
 Maintainers refresh this table with `node scripts/index-sketches.mjs` after merging. The site's front page updates on its own.

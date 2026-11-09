@@ -2,7 +2,7 @@
 
 Author: bkk · Started: 2026-11-02 · Status: sketch · Stack: static HTML + JS
 
-How is it possible that the repeated storms and atmospheric changes due to the weather phenomenon of Ọya’s children in the 19th century have been forgotten? This sketch asks which representations are needed to bring the storms back and make them unforgettably known.
+What changes when we understand the African girls* and young women* taken to European convents in the 19th century not as statistics or archival collateral damage, but as movements of air that resist discipline, or, in metaphorical terms, weather modification?
 
 ## Run
 
@@ -19,26 +19,30 @@ Then open http://localhost:8000.
 
 ## 1. Event
 
-A speculative map. The storms are metaphors for children who were abducted and taken to several countries in Europe in the 19th century. Each storm appears in a given year and recurs until a later one. Ọya is the Yoruba orisha of wind and storms.
+Between the 1840s and 1870s, missionaries, above all Niccolò Olivieri, bought African girls and young women on slave markets in Egypt and brought them to convents in France, Italy, Austria, Bavaria, Slovenia and Croatia. Ute Küppers-Braun lists 557 of them. Most died within a few years. Nuns and bishops explained the deaths with the European climate, and described the girls' resistance as storms, heat and wildness to be tamed.
 
-The children, places and years are historical (bkk has them; to add with sources). The storms and the map are interpretive.
+The title builds on Kamau Brathwaite's *tidalectics*: telling histories through the movement of tides. *Aerolectics* tries to tell these stories through movements of air.
 
 ## 2. Simulate
 
-What does the model or visualization calculate? What goes in, what rules does it follow, and what comes out?
+An interpretive map. One spiral per entry, placed at her convent town. It widens with each year between arrival and death. Where no death is recorded, it has not ended and keeps turning. Deaths recorded as affecting lungs or breath are drawn as a breathing red line. Uncertain records (several possible convents, contradictory dates) are dashed. Moving over or tapping a spiral shows her record: name before baptism where recorded, baptismal name, convent, dates, cause.
 
 ## 3. Situate
 
-Where does it sit in the world: places, infrastructure, institutions, history, politics?
+The Alps and northern Italy are the centre of the map. The Insubric Line and the Periadriatic Seam are drawn schematically: Bruneck, where Gambra*, Schiama* and Asue* lived, lies on it.
 
 ## 4. Narrate
 
-The story in a few sentences. What can a viewer learn here, and what should they not conclude?
+The map is the starting point. The second layer, still to come, is how weather was used by the nuns and priests: as an explanation for the deaths ("climate") and as a means of discipline ("storm", "hitzig", "a gentle temperament").
 
 ## Sources and limits
 
-For every dataset: who made it, which version and date, when you downloaded it, its licence, and what you changed. Say whether each layer is observed, reanalysed, modelled, synthetic or interpretive. Then say what this sketch cannot show.
-
-- Wind field in `index.html`: synthetic, made up for the starter template. Replace it.
-- Children, places and years: historical records from bkk’s research. Sources to add.
-- Storms and map: interpretive. The storms are metaphors, not observed weather.
+- Source: Ute Küppers-Braun, *Gekauft im Namen des Herrn. Afrikanische Kindersklaven in europäischen Klöstern im 19. Jahrhundert*, Münster: Aschendorff 2021. Convents from Appendix 1, all entries from Appendix 2 (pp. 337–367). Transcribed from the book in November 2026; places geocoded by hand at town level.
+- Records (places, names, dates, causes): historical, as recorded, many approximate. Durations are computed from arrival to death and approximate.
+- Names: name before baptism where the source gives one, with all spellings, otherwise X*. Racist labels in the source are not reproduced. Some names (Bakhita, Mabruka) may themselves have been given during enslavement.
+- Spirals, rotation, breathing: interpretive. Not observed weather.
+- Breath: a cause of death is recorded for only 92 of 557 entries; 25 name lungs or breath, 22 more most likely mean the same.
+- Coastline: Natural Earth (public domain), via the world-atlas package. Alps outline and fault lines: drawn by hand, schematic.
+- The asterisk marks what the archive cannot hold: uncertain names, uncertain spellings, and categories imposed on them.
+- The map cannot show discipline itself, only lifespans. The numbering in the source has gaps; the map shows the 557 recorded entries, not everyone.
+- The page loads two fonts from Google Fonts; without internet it falls back to system fonts.
