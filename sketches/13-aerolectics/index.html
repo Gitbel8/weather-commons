@@ -56,7 +56,6 @@ svg#map:active{cursor:grabbing}
 .am:hover path, .am.sel path{stroke-width:1.8}
 .am.dim{opacity:.18}
 @media (prefers-reduced-motion:no-preference){
-  .am.open .rot{animation:turn var(--t,60s) linear infinite;transform-box:fill-box;transform-origin:center}
   .am.lung .br{animation:breathe 4.6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
 }
 @keyframes turn{to{transform:rotate(-360deg)}}
@@ -106,12 +105,11 @@ aside{display:grid;gap:18px;min-width:0}
 }
 .inflow{filter:url(#haze)}
 .inflowline{fill:none;stroke:var(--ink);stroke-width:.6;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-dasharray:4 4}
-@media (prefers-reduced-motion:no-preference){.inflowline{animation:flow 14s linear infinite}}
 .link{fill:none;stroke:var(--ink);vector-effect:non-scaling-stroke;stroke-linecap:round}
 .link.still{stroke-width:.35;opacity:.13}
-.link.live{stroke-width:.45;opacity:.3;stroke-dasharray:6 6}
-@media (prefers-reduced-motion:no-preference){.link.live{animation:pulse 5s ease-in-out infinite}}
-@keyframes pulse{0%,100%{opacity:.12}50%{opacity:.45}}
+.link.live{stroke-width:.45;opacity:.4;stroke-dasharray:6 6}
+
+@keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
 @keyframes flow{to{stroke-dashoffset:-120}}
 .site-header{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:10px;font-size:13px}
 .site-header .wordmark{font-weight:600;color:var(--ink);text-decoration:none;margin-right:10px}
@@ -331,7 +329,7 @@ for(const t of TRACKS){const n=COUNT[t.from];
    for(let i=0;i<n;i++){const ang=hash(i*13+c.n.length)*Math.PI*2;const R=(18+hash(i*7+3)*34)*Math.sqrt(c.r);
      const sx=T[0]+Math.cos(ang)*R,sy=T[1]+Math.sin(ang)*R;const sw=(hash(i+5)>0.5?1:-1)*(0.5+hash(i*3)*0.6);
      const pts=[];for(let t=0;t<=1.0001;t+=0.1){const a=ang+sw*t*1.4;const r=R*(1-t)+1.2;pts.push([T[0]+Math.cos(a)*r,T[1]+Math.sin(a)*r]);}
-     const p=el('path',{class:'inflowline',d:smooth(pts)},inflow);p.style.opacity=(0.22+hash(i*9)*0.3).toFixed(2);p.style.animationDelay=(-hash(i*17+c.r)*14).toFixed(2)+'s';}}}
+     const p=el('path',{class:'inflowline',d:smooth(pts)},inflow);p.style.opacity=(0.22+hash(i*9)*0.3).toFixed(2);}}}
 // the capture: small eddies where the movement begins
 for(const c of CAPTURE){const n=Math.round(7*c.r);
   for(let i=0;i<n;i++){const a=i*2.39996,r=Math.sqrt(i+0.6)*6.5*c.r;const x=c.xy[0]+r*Math.cos(a),y=c.xy[1]+r*Math.sin(a);
@@ -343,12 +341,12 @@ for(const c of CAPTURE){const n=Math.round(7*c.r);
  for(let k=0;k<16;k++){const pts=[];for(let t=0;t<=1;t+=0.02){const r=1.5+t*24,a=k*2*Math.PI/16+t*5.0;pts.push([r*Math.cos(a),r*Math.sin(a)]);}
    el('path',{d:smooth(pts)},R);}}
 // one line of air from the vortex to every single storm; lines to storms that never ended keep pulsing
-{const A=HUBS.find(h=>h.n==='Alexandria').xy;const gl=el('g',{class:'links'},trk);
+{const A=HUBS.find(h=>h.n==='Alexandria').xy;const gl=el('g',{class:'links'},trk);const gs=el('g',{class:'links-still'},gl),gv=el('g',{class:'links-live'},gl);
  GIRLS.forEach((g,gi)=>{const dx=g.x-A[0],dy=g.y-A[1];
    const bend=(0.08+0.18*hash(g.id*7))*(hash(g.id*3)>0.5?1:-1);
    const c1=[A[0]+dx*0.35-dy*bend,A[1]+dy*0.35+dx*bend],c2=[A[0]+dx*0.75-dy*bend*0.6,A[1]+dy*0.75+dx*bend*0.6];
-   const p=el('path',{class:'link '+(g.st==='open'?'live':'still'),d:`M${A[0]},${A[1]}C${c1[0].toFixed(1)},${c1[1].toFixed(1)} ${c2[0].toFixed(1)},${c2[1].toFixed(1)} ${g.x},${g.y}`,'data-id':g.id},gl);
-   if(g.st==='open')p.style.animationDelay=(-hash(g.id*5)*5).toFixed(2)+'s';});}
+   const p=el('path',{class:'link '+(g.st==='open'?'live':'still'),d:`M${A[0]},${A[1]}C${c1[0].toFixed(1)},${c1[1].toFixed(1)} ${c2[0].toFixed(1)},${c2[1].toFixed(1)} ${g.x},${g.y}`,'data-id':g.id},g.st==='open'?gv:gs);
+});}
 for(const h of HUBS){el('circle',{class:'hub',cx:h.xy[0],cy:h.xy[1],r:1.1},afr);const t=el('text',{x:h.xy[0]+(h.n==='Alexandria'?-3:3),y:h.xy[1]+(h.n==='Alexandria'?-3:3),class:'hublabel','text-anchor':h.n==='Alexandria'?'end':'start'},afr);t.textContent=h.n;}
 for(const r of REGIONS){const t=el('text',{x:r.xy[0],y:r.xy[1],class:'region','text-anchor':'middle'},afr);t.textContent=r.n;}
 for(const p of PORTS){const g=el('g',{class:'port'},afr);el('rect',{x:p.xy[0]-1.1,y:p.xy[1]-1.1,width:2.2,height:2.2},g);const t=el('text',{x:p.xy[0]+1.8,y:p.xy[1]-1.8,class:'portlabel'},g);t.textContent=p.n;const tt=el('title',{},g);tt.textContent=p.n+': port of arrival named in the source ('+p.src+')';}
@@ -452,6 +450,20 @@ $('v-all').onclick=()=>{vb={x:0,y:0,w:W,h:H};apply();setView('all');};
 $('v-eu').onclick=()=>{const r=W/H,e=EUVIEW;let w=e[2],h=e[3];if(w/h<r)w=h*r;else h=w/r;vb={x:e[0]+e[2]/2-w/2,y:e[1]+e[3]/2-h/2,w,h};apply();setView('eu');};
 function setView(v){$('v-all').setAttribute('aria-pressed',v==='all');$('v-eu').setAttribute('aria-pressed',v==='eu');}
 apply();
+
+// slow motion for open storms and their lines, stepped a few times per second to keep the page light
+(function(){
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const rots=[...document.querySelectorAll('#ams .am.open .rot')].map(r=>({r,per:parseFloat(r.style.getPropertyValue('--t'))||60,dir:-1}));
+  const live=document.querySelector('.links-live');
+  let last=0;
+  function tick(now){
+    if(now-last>200){last=now;const t=now/1000;
+      for(const o of rots)o.r.setAttribute('transform',`rotate(${(o.dir*360*t/o.per)%360})`);
+      if(live)live.style.opacity=(0.675+0.325*Math.sin(t*2*Math.PI/5)).toFixed(3);}
+    requestAnimationFrame(tick);}
+  requestAnimationFrame(tick);
+})();
 })();
 
 </script>
