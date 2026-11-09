@@ -104,6 +104,9 @@ aside{display:grid;gap:18px;min-width:0}
   .track,.seafan{animation:flow 14s linear infinite}
   .eddy .rot,.vortex .rot{animation:turn var(--t,60s) linear infinite;transform-box:fill-box;transform-origin:center}
 }
+.inflow{filter:url(#haze)}
+.inflowline{fill:none;stroke:var(--ink);stroke-width:.6;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-dasharray:4 4}
+@media (prefers-reduced-motion:no-preference){.inflowline{animation:flow 14s linear infinite}}
 @keyframes flow{to{stroke-dashoffset:-120}}
 .site-header{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:10px;font-size:13px}
 .site-header .wordmark{font-weight:600;color:var(--ink);text-decoration:none;margin-right:10px}
@@ -138,6 +141,7 @@ aside{display:grid;gap:18px;min-width:0}
       <svg id="map" role="img" aria-labelledby="maptitle">
         <title id="maptitle">Map of convents in France, Italy, Austria, Germany, Slovenia and Croatia with one spiral for each girl or young woman recorded there</title>
         <defs>
+          <filter id="haze" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="0.5"></feGaussianBlur></filter>
           <pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
             <line x1="0" y1="0" x2="0" y2="5" stroke="var(--relief)" stroke-width="1.2"></line>
           </pattern>
@@ -315,6 +319,14 @@ const COUNT={Darfur:6,Nuba:3,Kordofan:4,Sennar:3,Oromo:6,Nile:12,Cairo:16};
 for(const t of TRACKS){const n=COUNT[t.from];
   for(let i=0;i<n;i++){const off=(i-(n-1)/2)*1.05;const d=smooth(offsetLine(t.pts,off,i*2.3+t.from.length));
     const p=el('path',{class:'track',d},trk);p.style.animationDelay=(-hash(i+t.from.length*7)*14).toFixed(2)+'s';}}
+// many faint, hazy currents that feed the places of capture, so the storm does not start from a point
+{const inflow=el('g',{class:'inflow'},trk);
+ const starts={Darfur:TRACKS[0].pts[0],Nuba:TRACKS[1].pts[0],Kordofan:TRACKS[2].pts[0],Sennar:TRACKS[3].pts[0],Oromo:TRACKS[4].pts[0]};
+ for(const c of CAPTURE){const T=starts[c.n]||c.xy;const n=Math.round(22*c.r);
+   for(let i=0;i<n;i++){const ang=hash(i*13+c.n.length)*Math.PI*2;const R=(18+hash(i*7+3)*34)*Math.sqrt(c.r);
+     const sx=T[0]+Math.cos(ang)*R,sy=T[1]+Math.sin(ang)*R;const sw=(hash(i+5)>0.5?1:-1)*(0.5+hash(i*3)*0.6);
+     const pts=[];for(let t=0;t<=1.0001;t+=0.1){const a=ang+sw*t*1.4;const r=R*(1-t)+1.2;pts.push([T[0]+Math.cos(a)*r,T[1]+Math.sin(a)*r]);}
+     const p=el('path',{class:'inflowline',d:smooth(pts)},inflow);p.style.opacity=(0.22+hash(i*9)*0.3).toFixed(2);p.style.animationDelay=(-hash(i*17+c.r)*14).toFixed(2)+'s';}}}
 // the capture: small eddies where the movement begins
 for(const c of CAPTURE){const n=Math.round(7*c.r);
   for(let i=0;i<n;i++){const a=i*2.39996,r=Math.sqrt(i+0.6)*6.5*c.r;const x=c.xy[0]+r*Math.cos(a),y=c.xy[1]+r*Math.sin(a);
