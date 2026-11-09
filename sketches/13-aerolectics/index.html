@@ -107,6 +107,11 @@ aside{display:grid;gap:18px;min-width:0}
 .inflow{filter:url(#haze)}
 .inflowline{fill:none;stroke:var(--ink);stroke-width:.6;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-dasharray:4 4}
 @media (prefers-reduced-motion:no-preference){.inflowline{animation:flow 14s linear infinite}}
+.link{fill:none;stroke:var(--ink);vector-effect:non-scaling-stroke;stroke-linecap:round}
+.link.still{stroke-width:.35;opacity:.13}
+.link.live{stroke-width:.45;opacity:.3;stroke-dasharray:6 6}
+@media (prefers-reduced-motion:no-preference){.link.live{animation:pulse 5s ease-in-out infinite}}
+@keyframes pulse{0%,100%{opacity:.12}50%{opacity:.45}}
 @keyframes flow{to{stroke-dashoffset:-120}}
 .site-header{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:10px;font-size:13px}
 .site-header .wordmark{font-weight:600;color:var(--ink);text-decoration:none;margin-right:10px}
@@ -172,7 +177,7 @@ aside{display:grid;gap:18px;min-width:0}
     <aside>
       <div class="legend">
         <h2>Reading the air</h2>
-        <div class="lg"><svg viewBox="0 0 44 24" class="lgline" id="lg-track"><path d="M2,20 C14,18 18,6 42,4" class="track"></path><path d="M2,14 C14,12 20,4 42,2" class="track"></path></svg><span>The storm track. It begins with the capture in Darfur, Kordofan, the Nuba Mountains, Sennar and among the Oromo, follows caravan routes and the Nile, gathers in Cairo and Alexandria, and from there reaches every place where girls* were brought. Drawn as interpretation, not as recorded routes.</span></div>
+        <div class="lg"><svg viewBox="0 0 44 24" class="lgline" id="lg-track"><path d="M2,20 C14,18 18,6 42,4" class="track"></path><path d="M2,14 C14,12 20,4 42,2" class="track"></path></svg><span>The storm track. It begins with the capture in Darfur, Kordofan, the Nuba Mountains, Sennar and among the Oromo, follows caravan routes and the Nile, gathers in Cairo and Alexandria. From there one line runs to each storm. Lines to storms that never ended keep pulsing; lines to storms that ended are still. Drawn as interpretation, not as recorded routes.</span></div>
         <div class="lg"><svg viewBox="-12 -12 24 24"><rect x="-3" y="-3" width="6" height="6" class="portmark"></rect></svg><span>Port of arrival named in the source. Most ships from Alexandria went to Marseille.</span></div>
         <div class="lg"><svg viewBox="-12 -12 24 24" id="lg-ended"></svg><span>One movement of air for each girl* or young woman*, placed at her convent. It widens with every year she lived there and ends with a point.</span></div>
         <div class="lg"><svg viewBox="-12 -12 24 24" id="lg-open"></svg><span>No death recorded: the movement has not ended. It keeps turning.</span></div>
@@ -337,15 +342,13 @@ for(const c of CAPTURE){const n=Math.round(7*c.r);
 {const V=el('g',{class:'vortex',transform:`translate(${VORTEX[0]},${VORTEX[1]})`},trk);const R=el('g',{class:'rot'},V);R.style.setProperty('--t','140s');
  for(let k=0;k<16;k++){const pts=[];for(let t=0;t<=1;t+=0.02){const r=1.5+t*24,a=k*2*Math.PI/16+t*5.0;pts.push([r*Math.cos(a),r*Math.sin(a)]);}
    el('path',{d:smooth(pts)},R);}}
-// out over the sea and inland: air lines from the vortex to every place where girls* were brought
-{const A=HUBS.find(h=>h.n==='Alexandria').xy;
- PLACES.forEach((pl,pi)=>{const n=1+Math.floor(Math.sqrt(pl.n));
-   for(let j=0;j<n;j++){const dx=pl.x-A[0],dy=pl.y-A[1],L=Math.hypot(dx,dy);
-     const bend=(0.10+0.16*hash(pi*7+j))*(hash(pi+j*3)>0.5?1:-1);
-     const c1=[A[0]+dx*0.35-dy*bend,A[1]+dy*0.35+dx*bend],c2=[A[0]+dx*0.75-dy*bend*0.6,A[1]+dy*0.75+dx*bend*0.6];
-     const e=[pl.x+(hash(j+pi)-0.5)*2*S*2,pl.y+(hash(j*5+pi)-0.5)*2*S*2];
-     const p=el('path',{class:'seafan',d:`M${A[0]},${A[1]}C${c1[0].toFixed(1)},${c1[1].toFixed(1)} ${c2[0].toFixed(1)},${c2[1].toFixed(1)} ${e[0].toFixed(1)},${e[1].toFixed(1)}`},trk);
-     p.style.animationDelay=(-hash(pi*11+j)*14).toFixed(2)+'s';}});}
+// one line of air from the vortex to every single storm; lines to storms that never ended keep pulsing
+{const A=HUBS.find(h=>h.n==='Alexandria').xy;const gl=el('g',{class:'links'},trk);
+ GIRLS.forEach((g,gi)=>{const dx=g.x-A[0],dy=g.y-A[1];
+   const bend=(0.08+0.18*hash(g.id*7))*(hash(g.id*3)>0.5?1:-1);
+   const c1=[A[0]+dx*0.35-dy*bend,A[1]+dy*0.35+dx*bend],c2=[A[0]+dx*0.75-dy*bend*0.6,A[1]+dy*0.75+dx*bend*0.6];
+   const p=el('path',{class:'link '+(g.st==='open'?'live':'still'),d:`M${A[0]},${A[1]}C${c1[0].toFixed(1)},${c1[1].toFixed(1)} ${c2[0].toFixed(1)},${c2[1].toFixed(1)} ${g.x},${g.y}`,'data-id':g.id},gl);
+   if(g.st==='open')p.style.animationDelay=(-hash(g.id*5)*5).toFixed(2)+'s';});}
 for(const h of HUBS){el('circle',{class:'hub',cx:h.xy[0],cy:h.xy[1],r:1.1},afr);const t=el('text',{x:h.xy[0]+(h.n==='Alexandria'?-3:3),y:h.xy[1]+(h.n==='Alexandria'?-3:3),class:'hublabel','text-anchor':h.n==='Alexandria'?'end':'start'},afr);t.textContent=h.n;}
 for(const r of REGIONS){const t=el('text',{x:r.xy[0],y:r.xy[1],class:'region','text-anchor':'middle'},afr);t.textContent=r.n;}
 for(const p of PORTS){const g=el('g',{class:'port'},afr);el('rect',{x:p.xy[0]-1.1,y:p.xy[1]-1.1,width:2.2,height:2.2},g);const t=el('text',{x:p.xy[0]+1.8,y:p.xy[1]-1.8,class:'portlabel'},g);t.textContent=p.n;const tt=el('title',{},g);tt.textContent=p.n+': port of arrival named in the source ('+p.src+')';}
