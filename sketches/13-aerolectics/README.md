@@ -25,7 +25,9 @@ The title builds on Kamau Brathwaite's *tidalectics*: telling histories through 
 
 ## 2. Simulate
 
-An interpretive map. One spiral per entry, placed at her convent town. It widens with each year between arrival and death. Where no death is recorded, it has not ended and keeps turning. Deaths recorded as affecting lungs or breath are drawn as a breathing red line. Uncertain records (several possible convents, contradictory dates) are dashed. Moving over or tapping a spiral shows her record: name before baptism where recorded, baptismal name, convent, dates, cause.
+An interpretive map, draft of 15 November, made to ask questions rather than to answer them. Every girl* and young woman* in the list is a storm at her convent town, all the same size: the map names and remembers, it does not measure. A point means her death is recorded; a storm that keeps turning means it is not. Names appear when you zoom in close. At least 643 more storms drift without name, place or date: Olivieri and Verri bought more than 1,200 girls (p. 302), the list holds 557.
+
+Around them, the climate they were exposed to: the 171 convents named in Appendix 1, lines where convents crowd together (a density of institutions, not of girls), and "voices of the climate": what nuns, bishops and priests wrote about climate, storms and thunder, drawn as weather fronts at their places. The storm track runs from capture in Sudan and Ethiopia via Cairo and Alexandria to every storm; it is interpretation, not recorded routes. Layers can be switched on and off to see them against each other.
 
 ## 3. Situate
 
@@ -42,6 +44,7 @@ The map is the starting point. The second layer, still to come, is how weather w
 - Names: name before baptism where the source gives one, with all spellings, otherwise X*. Racist labels in the source are not reproduced. Some names (Bakhita, Mabruka) may themselves have been given during enslavement.
 - Spirals, rotation, breathing: interpretive. Not observed weather.
 - Breath: a cause of death is recorded for only 92 of 557 entries; 25 name lungs or breath, 22 more most likely mean the same.
+- Climate layer: convents and orders from Appendix 1; density lines computed from convent locations only (kernel density, schematic, no units). Quotes from pp. 86, 92, 106, 107, 114, 118, 131, 140, 165, 200, 269; English renderings are translations. Positions of the drifting storms are random by design.
 - Coastline: Natural Earth (public domain), via the world-atlas package. Alps outline and fault lines: drawn by hand, schematic.
 - The asterisk marks what the archive cannot hold: uncertain names, uncertain spellings, and categories imposed on them.
 - The map cannot show discipline itself, only lifespans. The numbering in the source has gaps; the map shows the 557 recorded entries, not everyone.
