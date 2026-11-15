@@ -9,7 +9,7 @@ Working notes for sketch 13. Read this first. Date each entry, and move items to
 
 ## Decisions
 
-- 2026-11-15: the girls* stay storms (their power, their rage) but are no longer measured: all storms the same size. The measurable belongs to the climate side: convents, decisions, what was written. The map is a tool for questions, not the final work; the final work is the textile Traces.
+- 2026-11-15: the girls* stay storms (their power, their rage) but are no longer measured: all storms the same size. The measurable belongs to the climate side: convents, decisions, what was written. The map is a tool for questions, not the final work; the final work is a textile work.
 - 2026-11-09: research question: movements of air that resist discipline, or, in metaphorical terms, weather modification. Title after Brathwaite's tidalectics.
 - 2026-11-08: unclear records stay visible on the map: all possible convents are named, all spellings kept, uncertain records dashed.
 - 2026-11-08: duration is shown as extent, not strength, so no life reads as weaker. Lung deaths in two levels: named and likely.
