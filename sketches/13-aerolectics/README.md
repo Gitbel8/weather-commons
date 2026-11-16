@@ -2,7 +2,7 @@
 
 Author: bkk · Started: 2026-11-02 · Status: sketch · Stack: static HTML + JS
 
-Which questions become thinkable once we understand the abducted girls* and young women* not as numbers in the archive but as movements of air? In what ways can discipline be understood as a form of weather modification?
+What questions emerge once we understand the abducted girls* and young women* not as numbers in the archive but as movements of air? In what ways can discipline be understood as a form of weather modification?
 
 ## Run
 
