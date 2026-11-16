@@ -17,7 +17,6 @@ Working notes for sketch 13. Read this first. Date each entry, and move items to
 
 ## Questions
 
-- Research text: the full new paragraph (research, Brathwaite, dossier, "Wetter als Disziplinierung") still to be added to the page.
 - Racist terms in dossier quotes are abbreviated (N*, M*); keep this or quote in full?
 
 ## Done
