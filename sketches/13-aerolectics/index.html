@@ -61,6 +61,8 @@ svg#map:active{cursor:grabbing}
 @keyframes breathe{0%,100%{transform:scale(1)}45%{transform:scale(1.09)}}
 .zoom{position:absolute;right:10px;top:10px;display:grid;gap:6px}
 .zoom button{font:inherit;font-size:16px;width:32px;height:32px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:2px;cursor:pointer}
+.zoom button.zall{font-size:11.5px}
+.zhint{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(17,17,17,.82);color:#fff;font-size:14px;padding:10px 14px;border-radius:2px;pointer-events:none;max-width:80%;text-align:center}
 .zoom button:focus-visible,.chip:focus-visible{outline:2px solid var(--breath);outline-offset:2px}
 .scaleline{position:absolute;left:10px;bottom:8px;font-size:11px;color:var(--muted);font-family:var(--mono)}
 aside{display:grid;gap:18px;min-width:0}
@@ -216,9 +218,10 @@ aside{display:grid;gap:18px;min-width:0}
       <div class="zoom">
         <button id="zin" type="button" aria-label="Zoom in">+</button>
         <button id="zout" type="button" aria-label="Zoom out">−</button>
-        <button id="zreset" type="button" aria-label="Show whole map">○</button>
+        <button id="zreset" type="button" aria-label="Show whole map" title="Show whole map" class="zall">All</button>
       </div>
-      <span class="scaleline">drag to move · scroll or pinch to zoom</span>
+      <span class="scaleline">drag to move · zoom with + and −, a double-click, or ⌘/Ctrl + scroll</span>
+      <div class="zhint" id="zhint" hidden>To zoom, hold ⌘ (Mac) or Ctrl (Windows) while scrolling, or use + and −</div>
     </div>
 
     <div class="timeline" aria-label="Timeline">
@@ -542,7 +545,10 @@ function apply(){
 }
 function zoomAt(f,px,py){const nx=vb.x+(px)*(vb.w-vb.w/f),ny=vb.y+(py)*(vb.h-vb.h/f);vb={x:nx,y:ny,w:vb.w/f,h:vb.h/f};apply();}
 function rel(e){const r=svg.getBoundingClientRect();return [(e.clientX-r.left)/r.width,(e.clientY-r.top)/r.height];}
-svg.addEventListener('wheel',e=>{e.preventDefault();const [px,py]=rel(e);zoomAt(Math.exp(-e.deltaY*0.0018),px,py);},{passive:false});
+let hintT=null;function zoomHint(){const h=$('zhint');if(!h)return;h.hidden=false;clearTimeout(hintT);hintT=setTimeout(()=>{h.hidden=true;},1600);}
+svg.addEventListener('wheel',e=>{if(!(e.ctrlKey||e.metaKey)){zoomHint();return;}e.preventDefault();const [px,py]=rel(e);zoomAt(Math.exp(-e.deltaY*(e.ctrlKey&&Math.abs(e.deltaY)<20?0.01:0.0018)),px,py);},{passive:false});
+let anim=null;function zoomSmooth(f,px,py){cancelAnimationFrame(anim);const v0={...vb},ax=v0.x+px*v0.w,ay=v0.y+py*v0.h,t0=performance.now(),D=260;const step=()=>{const p=Math.max(0,Math.min(1,(performance.now()-t0)/D)),e=1-Math.pow(1-p,3),s=Math.pow(f,e),w=v0.w/s,h=v0.h/s;vb={x:ax-px*w,y:ay-py*h,w,h};apply();if(p<1)anim=requestAnimationFrame(step);};anim=requestAnimationFrame(step);}
+svg.addEventListener('dblclick',e=>{e.preventDefault();const [px,py]=rel(e);zoomSmooth(e.shiftKey?1/2:2,px,py);});
 const ptrs=new Map();let last=null,moved=false,pinch=null;
 svg.addEventListener('pointerdown',e=>{ptrs.set(e.pointerId,e);moved=false;last=[e.clientX,e.clientY];if(ptrs.size===2){const [a,b]=[...ptrs.values()];pinch=Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY);}});
 svg.addEventListener('pointermove',e=>{
@@ -555,7 +561,7 @@ svg.addEventListener('pointermove',e=>{
 });
 const up=e=>{ptrs.delete(e.pointerId);if(ptrs.size<2)pinch=null;setTimeout(()=>{moved=false;},0);};
 svg.addEventListener('pointerup',up);svg.addEventListener('pointercancel',up);
-$('zin').onclick=()=>zoomAt(1.6,.5,.5);$('zout').onclick=()=>zoomAt(1/1.6,.5,.5);
+$('zin').onclick=()=>zoomSmooth(1.8,.5,.5);$('zout').onclick=()=>zoomSmooth(1/1.8,.5,.5);
 $('zreset').onclick=()=>{vb={x:0,y:0,w:W,h:H};apply();};
 $('v-all').onclick=()=>{vb={x:0,y:0,w:W,h:H};apply();setView('all');};
 $('v-eu').onclick=()=>{const r=W/H,e=EUVIEW;let w=e[2],h=e[3];if(w/h<r)w=h*r;else h=w/r;vb={x:e[0]+e[2]/2-w/2,y:e[1]+e[3]/2-h/2,w,h};apply();setView('eu');};
