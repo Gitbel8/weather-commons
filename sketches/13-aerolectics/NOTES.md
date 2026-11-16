@@ -17,11 +17,13 @@ Working notes for sketch 13. Read this first. Date each entry, and move items to
 
 ## Questions
 
+- Racist terms in dossier quotes are abbreviated (N*, M*); keep this or quote in full?
 
 ## Done
 
 - 2026-11-02: started from the template.
 - 2026-11-02: wrote the research question on the page and in the README.
 - 2026-11-08: renamed the sketch from "Children of Ọya" to "Aerolectics" and the folder from `13-children-of-oya` to `13-aerolectics`. Text in the page and README that still says Ọya’s children was left as it is.
-- 2026-11-09: replaced the template with the Aerolectics map: 557 entries from Küppers-Braun 2021, convents, names, lifespans, breath, Insubric Line.
+- 2026-11-09: replaced the template with the Aerolectics map: 557 entries from Kueppers-Braun 2021, convents, names, lifespans, breath, Insubric Line.
 - 2026-11-15: climate draft: equal storms, names on close zoom, 643 unrecorded drifting storms, convents and density lines, voices of the climate as fronts, layer switches.
+- 2026-11-16: timeline (1839–1885), research dossier on the public page, new research questions, author spelled Kueppers-Braun, racist terms in quotes abbreviated, shortened map text.
